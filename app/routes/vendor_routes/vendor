@@ -1,0 +1,12 @@
+const express = require("express");
+const router = express.Router();
+const controller = require("../../controllers/vendor/vendor_controller");
+
+router.get("/", controller.get_all_vendors);
+router.get("/:id", controller.get_vendor_by_id);
+router.post("/", controller.create_vendor);
+router.delete("/delete_cnic_image", controller.delete_cnic_image);
+router.delete("/delete_agreement_pdf", controller.delete_agreement_pdf);
+router.put("/:id", controller.update_vendor);
+router.delete("/:id", controller.delete_vendor);
+module.exports = router;

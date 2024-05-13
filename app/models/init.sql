@@ -29,6 +29,26 @@ currency_code VARCHAR(255) NOT NULL,
 created_at TIMESTAMP DEFAULT NOW(),
 updated_at TIMESTAMP DEFAULT NOW()
 );
+CREATE TABLE IF NOT EXISTS product_category(
+product_category_id INT NOT NULL DEFAULT nextval('my_sequence') PRIMARY KEY,
+full_name VARCHAR(255) NOT NULL UNIQUE,
+created_at TIMESTAMP DEFAULT NOW(),
+updated_at TIMESTAMP DEFAULT NOW()
+);
+CREATE TABLE IF NOT EXISTS product_units(
+product_units_id INT NOT NULL DEFAULT nextval('my_sequence') PRIMARY KEY,
+full_name VARCHAR(255) NOT NULL UNIQUE,
+symbol VARCHAR(255) NOT NULL,
+currency_code VARCHAR(255) NOT NULL,
+created_at TIMESTAMP DEFAULT NOW(),
+updated_at TIMESTAMP DEFAULT NOW()
+);
+CREATE TABLE IF NOT EXISTS product_catalog(
+product_catalog_id INT NOT NULL DEFAULT nextval('my_sequence') PRIMARY KEY,
+full_name VARCHAR(255) NOT NULL,
+created_at TIMESTAMP DEFAULT NOW(),
+updated_at TIMESTAMP DEFAULT NOW()
+);
 CREATE TABLE IF NOT EXISTS payment_terms_types(
 payment_terms_type_id INT NOT NULL DEFAULT nextval('my_sequence') PRIMARY KEY,
 full_name VARCHAR(255) NOT NULL,
@@ -64,6 +84,26 @@ payment_term_id VARCHAR(20),
 cnic_image jsonb[],
 agreement_pdf text,
 -- contact_person VARCHAR(100)
+created_at TIMESTAMP DEFAULT NOW(),
+updated_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS item(
+item_id INT NOT NULL DEFAULT nextval('my_sequence') PRIMARY KEY,
+item_types VARCHAR(255) NOT NULL,
+name VARCHAR(50),
+product_category VARCHAR(50),
+product_units VARCHAR(100),
+product_usage_units VARCHAR(20),
+product_catalog VARCHAR(20),
+preferred_vendor VARCHAR(20),
+-- track 
+track_inventory boolean,
+opening_stock VARCHAR(100),
+opening_stock_rate_per_unit VARCHAR(100),
+reorder_level VARCHAR(20),
+description VARCHAR(20),
+product_image jsonb[],
 created_at TIMESTAMP DEFAULT NOW(),
 updated_at TIMESTAMP DEFAULT NOW()
 );

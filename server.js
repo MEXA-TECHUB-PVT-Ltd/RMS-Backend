@@ -43,6 +43,10 @@ app.use(
   require("./app/routes/payment_terms_routes/payment_terms")
 );
 app.use("/vendor", require("./app/routes/vendor_routes/vendor"));
+app.use("/product_catalog", require("./app/routes/product_catalog/product_catalog"));
+app.use("/product_category", require("./app/routes/product_category/product_category"));
+app.use("/product_units", require("./app/routes/product_units/product_units"));
+app.use("/item", require("./app/routes/Item_routes/item"));
 
 // Error handling middleware
 app.use((err, req, res, next) => {
